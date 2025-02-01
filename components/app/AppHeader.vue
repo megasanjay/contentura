@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppColorModeButton from "./AppColorModeButton.vue";
+</script>
 
 <template>
   <header class="border-b border-gray-200 dark:border-gray-800">
@@ -6,13 +8,17 @@
       <NuxtLink to="/" class="flex text-2xl font-bold"> Contentura </NuxtLink>
 
       <div class="flex items-center justify-center gap-3">
-        <NuxtLink to="/dashboard" class="text-base font-medium">
-          Docs
+        <NuxtLink to="/docs" class="text-base font-medium"> Docs </NuxtLink>
+
+        <NuxtLink to="/content" class="text-base font-medium">
+          Content
         </NuxtLink>
 
-        <NuxtLink to="/profile" class="text-base font-medium"> Api </NuxtLink>
+        <NuxtLink to="/blog" class="text-base font-medium"> Blog </NuxtLink>
+      </div>
 
-        <NuxtLink to="/settings" class="text-base font-medium"> Blog </NuxtLink>
+      <div>
+        <AppColorModeButton />
       </div>
     </div>
   </header>

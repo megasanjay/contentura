@@ -1,22 +1,23 @@
+index
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 const routeParams = route.params.slug as string[];
-const routePath = routeParams.join("/");
+// const routePath = routeParams.join("/");
 
-const { data: page } = await useAsyncData(() =>
-  queryCollection("content").path(routePath).first(),
-);
+// const { data: page } = await useAsyncData(() =>
+//   queryCollection("docs").path(routePath).first(),
+// );
 
 const { data } = await useAsyncData("navigation", () => {
-  return queryCollectionNavigation("content");
+  return queryCollectionNavigation("docs");
 });
 
-useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
-});
+// useSeoMeta({
+//   title: page.value?.title,
+//   description: page.value?.description,
+// });
 
 definePageMeta({
   layout: "default",
@@ -25,7 +26,7 @@ definePageMeta({
 
 <template>
   <div>
-    <pre>{{ routePath }}</pre>
+    <pre>{{ routeParams }}</pre>
 
     <hr />
 
@@ -39,8 +40,6 @@ definePageMeta({
 
     <hr />
 
-    <ContentRenderer v-if="page" :value="page" />
-
-    <div v-else>Page not found</div>
+    <pre>{{ data }}</pre>
   </div>
 </template>
