@@ -4,8 +4,8 @@
   <div>
     <AppHeader />
 
-    <main class="mt-[52px] py-10">
+    <div>
       <slot />
-    </main>
+    </div>
   </div>
 </template>
