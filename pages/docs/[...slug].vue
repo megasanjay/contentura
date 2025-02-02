@@ -26,18 +26,6 @@ const sidebarContent = computed(() => {
 
 <template>
   <NuxtLayout name="content" :sidebar-content="sidebarContent">
-    <pre>{{ routeParams }}</pre>
-
-    <hr />
-
-    <nav>
-      <ul v-if="sidebarContent">
-        <li v-for="item in sidebarContent" :key="item.path">
-          <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
-        </li>
-      </ul>
-    </nav>
-
-    <pre>{{ sidebarContent }}</pre>
+    <pre>{{ sidebarContent }} {{ routeParams }}</pre>
   </NuxtLayout>
 </template>

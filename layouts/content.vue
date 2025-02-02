@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const layoutCustomProps = useAttrs();
+const route = useRoute();
+
+const currentPath = computed(() => route.path);
 
 const sidebarContent = computed(() => {
   return layoutCustomProps["sidebar-content"];
@@ -7,93 +10,62 @@ const sidebarContent = computed(() => {
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <div class="flex">
-      <!-- Sidebar (static) -->
-      <aside class="sidebar w-full max-w-64 border-r p-4">
-        <!-- Menu items are rendered when the app starts -->
-        <nav>
-          <ul v-for="(section, key) in sidebarContent" :key="key">
-            <li>
-              <button
-                v-show="!selectedSection === key ? 'active' : 'hidden'"
-                class="toggle-btn"
-                @click="toggleSection(key)"
+  <div class="flex">
+    <!-- Sidebar (static) -->
+    <aside class="w-full max-w-64 border-r p-4">
+      <!-- Menu items are rendered when the app starts -->
+      <nav>
+        <ul v-for="item in sidebarContent" :key="item.stem">
+          <li>
+            <!-- Parent items with children -->
+            <div v-if="item.children">
+              <div
+                class="flex cursor-pointer items-center justify-between rounded-md p-1 hover:bg-gray-100"
+                :class="{
+                  'text-primary-500': currentPath.includes(item.stem),
+                }"
               >
-                {{ section.title }}
-              </button>
-            </li>
-          </ul>
+                <span class="font-medium">{{ item.title }}</span>
 
-          <!-- <ul class="sidebar-nav">
-            <li
-              v-for="item in sidebarContent"
-              :key="item.path"
-              class="sidebar-item"
-            >
-               Parent items with children -->
-          <!-- <div v-if="item.children">
-                <div
-                  class="sidebar-parent"
-                  :class="{ active: isActive(item.path) }"
-                  @click="toggleSection(item.path)"
-                >
-                  <span class="sidebar-title">{{ item.title }}</span>
-
-                  <span
-                    class="sidebar-arrow"
-                    :class="{ rotated: isExpanded(item.path) }"
-                  >
-                    ▼
-                  </span>
-                </div>
-
-                Children/nested items -->
-
-          <!-- <ul v-if="isExpanded(item.path)" class="sidebar-children">
-                  <li
-                    v-for="child in item.children"
-                    :key="child.path"
-                    class="sidebar-child"
-                  >
-                    <router-link
-                      :to="child.path"
-                      class="sidebar-link"
-                      :class="{ active: isActive(child.path) }"
-                    >
-                      {{ child.title }}
-                    </router-link>
-                  </li>
-                </ul>
+                <Icon name="mingcute:right-fill" size="20" />
               </div>
 
-              Items without children -->
-          <!-- <div v-else>
-                <router-link
-                  :to="item.path"
-                  class="sidebar-link"
-                  :class="{ active: isActive(item.path) }"
+              <ul v-if="item.children" class="ml-4 font-normal">
+                <li
+                  v-for="child in item.children"
+                  :key="child.stem"
+                  class="mb-1 flex items-center rounded-md p-1 hover:bg-slate-100 hover:text-gray-900"
                 >
-                  {{ item.title }}
-                </router-link>
-              </div>
-            </li>
-          </ul> -->
+                  <NuxtLink
+                    :to="child.path"
+                    class="w-full"
+                    :class="{
+                      'text-primary-500': currentPath.includes(child.stem),
+                    }"
+                  >
+                    {{ child.title }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
 
-          <a v-show="true" href="#" class="flex w-full flex-col rounded-l px-4">
-            {{ sidebarContent }}
-          </a>
-        </nav>
-      </aside>
+            <!-- Items without children -->
+            <div v-else>
+              <NuxtLink :to="item.path">
+                {{ item.title }}
+              </NuxtLink>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
-      <!-- Main content area -->
+    <!-- Main content area -->
 
-      <main class="w-full max-w-[80vw] overflow-y-auto p-6">
-        <!-- Your content goes here -->
-        <div class="space-y-6">
-          <slot />
-        </div>
-      </main>
-    </div>
+    <main class="w-full max-w-[80vw] overflow-y-auto p-6">
+      <pre> route {{ route.path }} {{ typeof route.path }} </pre>
+
+      <slot />
+    </main>
   </div>
 </template>
