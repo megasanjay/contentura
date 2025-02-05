@@ -15,7 +15,7 @@ definePageMeta({
 
 <template>
   <div>
-    <ContentRenderer v-if="home" :value="home" />
+    <ContentRenderer v-if="home" :value="home" class="prose prose-slate" />
 
     <div v-else>Home not found</div>
   </div>

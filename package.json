@@ -16,11 +16,13 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
+    "@nuxt-themes/typography": "^1.0.1",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "0.7.5",
     "@nuxt/ui": "^3.0.0-alpha.11",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@stylistic/eslint-plugin-js": "^2.13.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@typescript-eslint/parser": "^8.21.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^10.0.1",

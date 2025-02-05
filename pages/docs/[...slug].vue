@@ -1,31 +1,37 @@
 index
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-
 const route = useRoute();
-const routeParams = route.params.slug as string[];
-// const routePath = routeParams.join("/");
-
-// const { data: page } = await useAsyncData(() =>
-//   queryCollection("docs").path(routePath).first(),
-// );
 
 const { data } = await useAsyncData("navigation", () => {
   return queryCollectionNavigation("docs");
 });
 
-// useSeoMeta({
-//   title: page.value?.title,
-//   description: page.value?.description,
-// });
+const { data: page } = await useAsyncData(() =>
+  queryCollection("docs").path(route.path).first(),
+);
+
+useSeoMeta({
+  title: page.value?.title,
+  description: page.value?.description,
+});
 
 const sidebarContent = computed(() => {
-  return "children" in data.value[0] ? data.value[0].children : [];
+  return data.value && "children" in data.value[0]
+    ? data.value[0].children
+    : [];
 });
 </script>
 
 <template>
   <NuxtLayout name="content" :sidebar-content="sidebarContent">
-    <pre>{{ sidebarContent }} {{ routeParams }}</pre>
+    <div class="prose prose-slate prose-lg">
+      <ContentRenderer v-if="page" :value="page" />
+
+      <div v-else>Page not found</div>
+    </div>
+
+    <div>
+      <ContentRenderer v-if="page" :value="page" />
+    </div>
   </NuxtLayout>
 </template>

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@plugin "@tailwindcss/typography";
 :root {
   --ui-radius: var(--radius-lg);
   --ui-container: var(--container-7xl);

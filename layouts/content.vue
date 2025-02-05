@@ -63,8 +63,6 @@ const sidebarContent = computed(() => {
     <!-- Main content area -->
 
     <main class="w-full max-w-[80vw] overflow-y-auto p-6">
-      <pre> route {{ route.path }} {{ typeof route.path }} </pre>
-
       <slot />
     </main>
   </div>
