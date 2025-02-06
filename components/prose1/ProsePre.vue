@@ -1,9 +1,11 @@
 <template>
-  <pre :class="$props.class"><slot /></pre>
+  <pre :class="$props.class">
+    {{  props }}
+    <slot /></pre>
 </template>
 
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   class: {
     default: null,
     type: String,

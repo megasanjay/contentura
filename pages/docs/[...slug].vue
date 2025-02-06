@@ -24,7 +24,9 @@ const sidebarContent = computed(() => {
 
 <template>
   <NuxtLayout name="content" :sidebar-content="sidebarContent">
-    <div class="prose prose-slate prose-lg">
+    <div
+      class="prose prose-slate prose-lg prose-pre:bg-slate-50 dark:prose-pre:bg-slate-900"
+    >
       <ContentRenderer v-if="page" :value="page" />
 
       <div v-else>Page not found</div>
