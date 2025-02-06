@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from "chokidar";
+// import { watch } from "chokidar";
 
 const colorMode = useColorMode();
 
@@ -31,11 +31,11 @@ useSeoMeta({
 });
 
 // Watch for changes in the content folder and reload the nuxt app
-watch("content").on("all", async (event, path) => {
-  console.info(`[Contentura] Reloading Nuxt app due to ${event} in ${path}`);
+// watch("content").on("all", async (event, path) => {
+//   console.info(`[Contentura] Reloading Nuxt app due to ${event} in ${path}`);
 
-  await reloadNuxtApp();
-});
+//   await reloadNuxtApp();
+// });
 </script>
 
 <template>
