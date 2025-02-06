@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { watch } from "chokidar";
+
 const colorMode = useColorMode();
 
 const color = computed(() =>
@@ -26,6 +28,13 @@ useSeoMeta({
   twitterCard: "summary_large_image",
   twitterImage:
     "https://kalai.fairdataihub.org/api/generate?title=Contentura&description=Some%20description%20here%0A&app=Contentura&org=eyeact",
+});
+
+// Watch for changes in the content folder and reload the nuxt app
+watch("content").on("all", async (event, path) => {
+  console.info(`[Contentura] Reloading Nuxt app due to ${event} in ${path}`);
+
+  await reloadNuxtApp();
 });
 </script>
 

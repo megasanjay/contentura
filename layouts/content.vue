@@ -51,7 +51,13 @@ const sidebarContent = computed(() => {
 
             <!-- Items without children -->
             <div v-else>
-              <NuxtLink :to="item.path">
+              <NuxtLink
+                :to="item.path"
+                class="flex cursor-pointer items-center rounded-md p-1 hover:bg-gray-100"
+                :class="{
+                  'text-primary-500': currentPath.includes(item.stem),
+                }"
+              >
                 {{ item.title }}
               </NuxtLink>
             </div>
@@ -62,7 +68,7 @@ const sidebarContent = computed(() => {
 
     <!-- Main content area -->
 
-    <main class="w-full max-w-[80vw] overflow-y-auto p-6">
+    <main class="w-full max-w-[80vw] overflow-y-auto px-10 py-6">
       <slot />
     </main>
   </div>

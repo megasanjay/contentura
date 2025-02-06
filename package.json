@@ -12,11 +12,13 @@
     "lint": "yarn lint:js && yarn lint:prettier",
     "lint:fix": "prettier --write --list-different . && yarn lint:js --fix",
     "postinstall": "nuxt prepare",
+    "reset": "rm -rf node_modules && rm -rf .nuxt && rm -rf dist && rm -rf .output && yarn install",
     "prune-branches": "git removed-branches --prune --force"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
     "@nuxt-themes/typography": "^1.0.1",
+    "@nuxt/content": "^3.0.0",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "0.7.5",
     "@nuxt/ui": "^3.0.0-alpha.11",
@@ -24,6 +26,7 @@
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@tailwindcss/typography": "^0.5.16",
     "@typescript-eslint/parser": "^8.21.0",
+    "chokidar": "^4.0.3",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
@@ -42,8 +45,5 @@
   "volta": {
     "node": "20.18.1",
     "yarn": "1.22.22"
-  },
-  "dependencies": {
-    "@nuxt/content": "^3.0.0"
   }
 }
