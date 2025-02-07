@@ -15,17 +15,17 @@ const sidebarContent = computed(() => {
     <aside class="w-full max-w-64 border-r p-4">
       <!-- Menu items are rendered when the app starts -->
       <nav>
-        <ul v-for="item in sidebarContent" :key="item.stem">
+        <ul v-for="item in sidebarContent" :key="item.path">
           <li>
             <!-- Parent items with children -->
             <div v-if="item.children">
               <div
                 class="flex cursor-pointer items-center justify-between rounded-md p-1 hover:bg-gray-100"
                 :class="{
-                  'text-primary-500': currentPath.includes(item.stem),
+                  'text-primary-500': currentPath.includes(item.path),
                 }"
               >
-                <span class="font-medium">{{ item.title }}</span>
+                <span class="font-medium">{{ item.title }} </span>
 
                 <Icon name="mingcute:right-fill" size="20" />
               </div>
@@ -33,14 +33,14 @@ const sidebarContent = computed(() => {
               <ul v-if="item.children" class="ml-4 font-normal">
                 <li
                   v-for="child in item.children"
-                  :key="child.stem"
+                  :key="child.path"
                   class="mb-1 flex items-center rounded-md p-1 hover:bg-slate-100 hover:text-gray-900"
                 >
                   <NuxtLink
                     :to="child.path"
                     class="w-full"
                     :class="{
-                      'text-primary-500': currentPath.includes(child.stem),
+                      'text-primary-500': currentPath.includes(child.path),
                     }"
                   >
                     {{ child.title }}
@@ -55,7 +55,7 @@ const sidebarContent = computed(() => {
                 :to="item.path"
                 class="flex cursor-pointer items-center rounded-md p-1 hover:bg-gray-100"
                 :class="{
-                  'text-primary-500': currentPath.includes(item.stem),
+                  'text-primary-500': currentPath.includes(item.path),
                 }"
               >
                 {{ item.title }}
