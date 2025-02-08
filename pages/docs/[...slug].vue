@@ -25,7 +25,7 @@ const sidebarContent = computed(() => {
 <template>
   <NuxtLayout name="content" :sidebar-content="sidebarContent">
     <div
-      class="prose prose-slate prose-lg prose-pre:bg-slate-50 dark:prose-pre:bg-slate-900 prose-code:text-slate-900 dark:prose-code:text-slate-50"
+      class="prose prose-slate prose-lg prose-pre:bg-slate-50 dark:prose-pre:bg-slate-900 prose-code:text-slate-900 dark:prose-code:text-slate-50 prose-headings:mt-6"
     >
       <ContentRenderer v-if="page" :value="page" />
 

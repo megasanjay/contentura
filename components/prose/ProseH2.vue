@@ -1,5 +1,5 @@
 <template>
-  <h2 :id="props.id">
+  <h2 :id="props.id" class="text-slate-900 dark:text-slate-100">
     <a v-if="props.id && generate" :href="`#${props.id}`">
       <slot />
     </a>

@@ -12,7 +12,7 @@ const sidebarContent = computed(() => {
 <template>
   <div class="flex">
     <!-- Sidebar (static) -->
-    <aside class="w-full max-w-64 border-r p-4">
+    <aside class="w-full max-w-64 border-r border-slate-200 p-4">
       <!-- Menu items are rendered when the app starts -->
       <nav>
         <ul v-for="item in sidebarContent" :key="item.path">
