@@ -1641,9 +1641,9 @@
     local-pkg "^0.4.2"
 
 "@nuxtjs/mdc@^0.13.0":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/mdc/-/mdc-0.13.1.tgz#59e4b9e38e9e18bc34347b0c5d194382f537dad6"
-  integrity sha512-4nywK8db32Qk5iGCtJA7ahT6Mns/47VTdjOLnjPtFlTdLegOtIlXTQ5OFsVkK+JQ9R8pxiNpv8FN7LzraqOjaw==
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/mdc/-/mdc-0.13.3.tgz#36a3a2ee258092b963bc4dd32664749edc89dcc6"
+  integrity sha512-re0DPjSHREB4F/h3CCKKeJ8t4ABlcJMPNIPlHMpkqCq4jBNifNtLptdy7PpxX8l0QnKv1t+oEvHv1gD+RRiSjA==
   dependencies:
     "@nuxt/kit" "^3.15.2"
     "@shikijs/transformers" "^1.27.2"
